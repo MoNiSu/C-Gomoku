@@ -6,23 +6,23 @@
 #include <stdlib.h>
 #include <Windows.h>
 
-void hello(void); // ì‚¬ìš©ìì—ê²Œ ì•ˆë‚´ - MoNisu
-void drawLine(int num); // ì¤„ ê·¸ë¦¬ëŠ” í•¨ìˆ˜ - MoNiSu
-void drawBoard(void); // ë°”ë‘‘íŒ ê·¸ë¦¬ëŠ” í•¨ìˆ˜ - MoNiSu
-void sequence(int num); //ìˆœì„œ ë‚˜íƒ€ë‚´ëŠ” í•¨ìˆ˜ - ê¹€ì„±ë ¬
-void cursor(short x, short y); // ì»¤ì„œ ì…ë ¥ í•¨ìˆ˜ - MoNiSu
-void playGoStone(int arr[20][20], int num); // ì»¤ì„œ ì›€ì§ì´ê¸°, ë°”ë‘‘ëŒ ë‘ëŠ” í•¨ìˆ˜ - MoNiSu, í•¨ìˆ˜ ì´ë¦„ ë³€ê²½ê³¼ í¬ì¸í„° ì´ìš© - ê¹€ì„±ë ¬
-void checkRule(int arr[20][20]); //ì˜¤ëª© ë£° í™•ì¸ - ê¹€ì„±ë ¬
-void checkWin(int arr[20][20], bool* status); // ì˜¤ëª© ìŠ¹ë¦¬ ì¡°ê±´ - ê¹€ì„±ë ¬, MoNiSu
+void hello(void); // »ç¿ëÀÚ¿¡°Ô ¾È³» - MoNisu
+void drawLine(int num); // ÁÙ ±×¸®´Â ÇÔ¼ö - MoNiSu
+void drawBoard(void); // ¹ÙµÏÆÇ ±×¸®´Â ÇÔ¼ö - MoNiSu
+void sequence(int num); //¼ø¼­ ³ªÅ¸³»´Â ÇÔ¼ö - ±è¼º·Ä
+void cursor(short x, short y); // Ä¿¼­ ÀÔ·Â ÇÔ¼ö - MoNiSu
+void playGoStone(int arr[20][20], int num); // Ä¿¼­ ¿òÁ÷ÀÌ±â, ¹ÙµÏµ¹ µÎ´Â ÇÔ¼ö - MoNiSu, ÇÔ¼ö ÀÌ¸§ º¯°æ°ú Æ÷ÀÎÅÍ ÀÌ¿ë - ±è¼º·Ä
+void checkRule(int arr[20][20]); //¿À¸ñ ·ê È®ÀÎ - ±è¼º·Ä
+void checkWin(int arr[20][20], bool* status); // ¿À¸ñ ½Â¸® Á¶°Ç - ±è¼º·Ä, MoNiSu
 
 void main(void) {
-  int board[20][20] = { 0 }; // 0ë²ˆì¹¸ì€ ì•ˆ ì”€ 1ë²ˆë¶€í„° ì‹œì‘ ì˜ˆ) board[10][10] == 2 ê°€ë¡œ ì„¸ë¡œ 10ë²ˆì§¸ ì¤„ ê²€ì€ëŒ - MoNiSu
-  bool gameStatus; // true == ê²Œì„ ì‹œì‘ ì•„ë‹ˆë©´ ê²Œì„ ì¤‘, false == ê²Œì„ ë - MoNiSu
-  bool* pGameStatus = &gameStatus; // í¬ì¸í„°ë¥¼ í™œìš©í•´ ê²Œì„ì˜ ìƒí™©ì„ ì œì–´ - MoNiSu
-  int user = 2; // 2 == ê²€ì€ ëŒ, 3 == í° ëŒ - MoNiSu
+  int board[20][20] = { 0 }; // 0¹øÄ­Àº ¾È ¾¸ 1¹øºÎÅÍ ½ÃÀÛ ¿¹) board[10][10] == 2 °¡·Î ¼¼·Î 10¹øÂ° ÁÙ °ËÀºµ¹ - MoNiSu
+  bool gameStatus; // true == °ÔÀÓ ½ÃÀÛ ¾Æ´Ï¸é °ÔÀÓ Áß, false == °ÔÀÓ ³¡ - MoNiSu
+  bool* pGameStatus = &gameStatus; // Æ÷ÀÎÅÍ¸¦ È°¿ëÇØ °ÔÀÓÀÇ »óÈ²À» Á¦¾î - MoNiSu
+  int user = 2; // 2 == °ËÀº µ¹, 3 == Èò µ¹ - MoNiSu
 
   hello();
-  system("cls"); // ì½˜ì†” ì°½ ì´ˆê¸°í™” - MoNiSu
+  system("cls"); // ÄÜ¼Ö Ã¢ ÃÊ±âÈ­ - MoNiSu
   drawBoard();
 
   *pGameStatus = true;
@@ -43,30 +43,30 @@ void main(void) {
 
   cursor(5, 5);
   if (user == 3) {
-    printf("***  ì„ ê³µ (í‘ëŒ / â—‹) ì´ ìŠ¹ë¦¬ í•˜ì˜€ìŠµë‹ˆë‹¤. ***\n\n\n");
+    printf("***  ¼±°ø (Èæµ¹ / ¡Û) ÀÌ ½Â¸® ÇÏ¿´½À´Ï´Ù. ***\n\n\n");
   }
   else {
-    printf("***  í›„ê³µ (ë°±ëŒ / â—) ì´ ìŠ¹ë¦¬ í•˜ì˜€ìŠµë‹ˆë‹¤. ***\n\n\n");
+    printf("***  ÈÄ°ø (¹éµ¹ / ¡Ü) ÀÌ ½Â¸® ÇÏ¿´½À´Ï´Ù. ***\n\n\n");
   }
 
   exit(0);
 }
 
 void hello(void) {
-  printf(" *** ì•ˆë…•í•˜ì‹­ë‹ˆê¹Œ. ì˜¤ëª©ì— ì˜¤ì‹  ê²ƒì„ í™˜ì˜í•©ë‹ˆë‹¤. ***\n");
+  printf(" *** ¾È³çÇÏ½Ê´Ï±î. ¿À¸ñ¿¡ ¿À½Å °ÍÀ» È¯¿µÇÕ´Ï´Ù. ***\n");
   Sleep(1500);
-  printf(" *** ë³¸ ê²Œì„ì€ Cì–¸ì–´ë¡œ ì œì‘ ë˜ì–´ ìˆìŠµë‹ˆë‹¤. ***\n");
+  printf(" *** º» °ÔÀÓÀº C¾ğ¾î·Î Á¦ÀÛ µÇ¾î ÀÖ½À´Ï´Ù. ***\n");
   Sleep(1500);
-  printf(" *** ì˜¤ëª©íŒ ìƒì„±ì„ ì‹œì‘í•©ë‹ˆë‹¤. ***\n");
+  printf(" *** ¿À¸ñÆÇ »ı¼ºÀ» ½ÃÀÛÇÕ´Ï´Ù. ***\n");
   Sleep(1500);
 }
 
 void drawLine(int num) {
-  const char* line[10] = { // intí˜• ìë£Œ ì„ ì–¸ì„ char í¬ì¸í„° ì„ ì–¸ìœ¼ë¡œ ë³€ê²½ í›„ ì˜ í‘œì‹œë¨ - ê¹€ì„±ë ¬
-    " â”Œ", " â”œ", " â””", "â”€â”¬", "â”€â”¼", "â”€â”´", "â”€â”", "â”€â”¤", "â”€â”˜"
+  const char* line[10] = { // intÇü ÀÚ·á ¼±¾ğÀ» char Æ÷ÀÎÅÍ ¼±¾ğÀ¸·Î º¯°æ ÈÄ Àß Ç¥½ÃµÊ - ±è¼º·Ä
+    " ¦£", " ¦§", " ¦¦", "¦¡¦¨", "¦¡¦«", "¦¡¦ª", "¦¡¦¤", "¦¡¦©", "¦¡¦¥"
   };
   printf("%s", line[num]);
-  // Sleep(1); // í…ŒìŠ¤íŠ¸ í•  ì‹œì—ëŠ” ì£¼ì„ ì²˜ë¦¬ - MoNiSu
+  // Sleep(1); // Å×½ºÆ® ÇÒ ½Ã¿¡´Â ÁÖ¼® Ã³¸® - MoNiSu
 }
 
 void drawBoard(void) {
@@ -111,19 +111,19 @@ void drawBoard(void) {
 }
 
 void sequence(int num) {
-  if (num == 2) { //í‘ëŒ ì°¨ë¡€ì¼ë•Œ - ê¹€ì„±ë ¬
+  if (num == 2) { //Èæµ¹ Â÷·ÊÀÏ¶§ - ±è¼º·Ä
     cursor(2, 21);
-    printf("*** í‘ëŒ ì°¨ë¡€ì…ë‹ˆë‹¤ (í‘ëŒ / â—‹) ***");
+    printf("*** Èæµ¹ Â÷·ÊÀÔ´Ï´Ù (Èæµ¹ / ¡Û) ***");
   }
-  else { //ë°±ëŒ ì°¨ë¡€ì¼ë•Œ - ê¹€ì„±ë ¬
+  else { //¹éµ¹ Â÷·ÊÀÏ¶§ - ±è¼º·Ä
     cursor(2, 21);
-    printf("*** ë°±ëŒ ì°¨ë¡€ì…ë‹ˆë‹¤ (ë°±ëŒ / â—) ***");
+    printf("*** ¹éµ¹ Â÷·ÊÀÔ´Ï´Ù (¹éµ¹ / ¡Ü) ***");
   }
 }
 
 void cursor(short x, short y) {
-  COORD pos = { x * 2 - 1, y - 1 }; // COORDëŠ” short ë³€ìˆ˜ ë°°ì—´ - MoNiSu
-  SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos); // ì½˜ì†” ì¶œë ¥ ìœ„ì¹˜ ì¡°ì • - MoNiSu
+  COORD pos = { x * 2 - 1, y - 1 }; // COORD´Â short º¯¼ö ¹è¿­ - MoNiSu
+  SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos); // ÄÜ¼Ö Ãâ·Â À§Ä¡ Á¶Á¤ - MoNiSu
 }
 
 void playGoStone(int arr[20][20], int num) {
@@ -133,31 +133,31 @@ void playGoStone(int arr[20][20], int num) {
   do {
     if (_kbhit()) {
       key = _getch();
-      if (key == 224) { // 224 + a == ë°©í–¥í‚¤ - MoNiSu
+      if (key == 224) { // 224 + a == ¹æÇâÅ° - MoNiSu
         key = _getch();
         switch (key) {
-        case 72: // 72 == ì•„ë˜ - MoNiSu
+        case 72: // 72 == ¾Æ·¡ - MoNiSu
           --y;
           if (y < 1) {
             y = 1;
           }
           cursor(x, y);
           break;
-        case 75: // 75 == ì™¼ìª½ - MoNiSu
+        case 75: // 75 == ¿ŞÂÊ - MoNiSu
           --x;
           if (x < 1) {
             x = 1;
           }
           cursor(x, y);
           break;
-        case 77: // 77 == ì˜¤ë¥¸ìª½ - MoNiSu
+        case 77: // 77 == ¿À¸¥ÂÊ - MoNiSu
           ++x;
           if (x > 19) {
             x = 19;
           }
           cursor(x, y);
           break;
-        case 80: // 80 == ìœ„ìª½ - MoNiSu
+        case 80: // 80 == À§ÂÊ - MoNiSu
           ++y;
           if (y > 19) {
             y = 19;
@@ -166,15 +166,15 @@ void playGoStone(int arr[20][20], int num) {
           break;
         }
       }
-      else if (key == 32) { // 32 == ìŠ¤í˜ì´ìŠ¤ ë°” - MoNiSu
+      else if (key == 32) { // 32 == ½ºÆäÀÌ½º ¹Ù - MoNiSu
         if (arr[x][y] == 0) {
           cursor(x, y);
           if (num == 2) {
-            printf("â—‹");
-            arr[x][y] = num; // boardì— ì €ì¥
+            printf("¡Û");
+            arr[x][y] = num; // board¿¡ ÀúÀå
           }
           else {
-            printf("â—");
+            printf("¡Ü");
             arr[x][y] = num;
           }
           break;
@@ -189,10 +189,10 @@ void checkRule(int arr[20][20]) {
 }
 
 void checkWin(int arr[20][20], bool* status) {
-  for (int i = 1; i <= 19; i++) { // êµ¬ì¡° ê°œì„  - MoNiSu
+  for (int i = 1; i <= 19; i++) { // ±¸Á¶ °³¼± - MoNiSu
     for (int j = 5; j <= 19; j++) {
       if (i <= 15) {
-        if ( // ê°€ë¡œ í™•ì¸ - ê¹€ì„±ë ¬, MoNiSu
+        if ( // °¡·Î È®ÀÎ - ±è¼º·Ä, MoNiSu
           arr[i][j] != 0 &&
           arr[i][j] == arr[i + 1][j] &&
           arr[i + 1][j] == arr[i + 2][j] &&
@@ -203,7 +203,7 @@ void checkWin(int arr[20][20], bool* status) {
         }
 
         if (j >= 5) {
-          if ( // /(ìŠ¬ë˜ì‹œ) ëŒ€ê°ì„  í™•ì¸ - ê¹€ì„±ë ¬, MoNiSu
+          if ( // /(½½·¡½Ã) ´ë°¢¼± È®ÀÎ - ±è¼º·Ä, MoNiSu
             arr[i][j] != 0 &&
             arr[i][j] == arr[i + 1][j - 1] &&
             arr[i + 1][j - 1] == arr[i + 2][j - 2] &&
@@ -215,7 +215,7 @@ void checkWin(int arr[20][20], bool* status) {
         }
 
         if (j <= 15) {
-          if ( // ì—­ìŠ¬ë˜ì‹œ ëŒ€ê°ì„  í™•ì¸ - ê¹€ì„±ë ¬, MoNiSu
+          if ( // ¿ª½½·¡½Ã ´ë°¢¼± È®ÀÎ - ±è¼º·Ä, MoNiSu
             arr[i][j] != 0 &&
             arr[i][j] == arr[i + 1][j + 1] &&
             arr[i + 1][j + 1] == arr[i + 2][j + 2] &&
@@ -228,7 +228,7 @@ void checkWin(int arr[20][20], bool* status) {
       }
 
       if (j <= 15) {
-        if ( // ì„¸ë¡œ í™•ì¸ - ê¹€ì„±ë ¬, MoNiSu
+        if ( // ¼¼·Î È®ÀÎ - ±è¼º·Ä, MoNiSu
           arr[i][j] != 0 &&
           arr[i][j] == arr[i][j + 1] &&
           arr[i][j + 1] == arr[i][j + 2] &&
