@@ -9,10 +9,10 @@
 void hello(void); // 사용자에게 안내 - MoNisu
 void drawLine(int num); // 줄 그리는 함수 - MoNiSu
 void drawBoard(void); // 바둑판 그리는 함수 - MoNiSu
-void sequence(int num); //순서 나타내는 함수 - 김성렬
+void sequence(int user); // 순서 나타내는 함수 - 김성렬
 void cursor(short x, short y); // 커서 입력 함수 - MoNiSu
-void playGoStone(int arr[20][20], int num); // 커서 움직이기, 바둑돌 두는 함수 - MoNiSu, 함수 이름 변경과 포인터 이용 - 김성렬
-void checkRule(int arr[20][20]); //오목 룰 확인 - 김성렬
+void checkRule(int arr[20][20], int user); // 오목 룰 확인 - 김성렬
+void playGoStone(int arr[20][20], int user); // 커서 움직이기, 바둑돌 두는 함수 - MoNiSu, 함수 이름 변경과 포인터 이용 - 김성렬
 void checkWin(int arr[20][20], bool* status); // 오목 승리 조건 - 김성렬, MoNiSu
 
 void main(void) {
@@ -21,7 +21,7 @@ void main(void) {
   bool* pGameStatus = &gameStatus; // 포인터를 활용해 게임의 상황을 제어 - MoNiSu
   int user = 2; // 2 == 검은 돌, 3 == 흰 돌 - MoNiSu
 
-  hello();
+  // hello();
   system("cls"); // 콘솔 창 초기화 - MoNiSu
   drawBoard();
 
@@ -29,6 +29,7 @@ void main(void) {
 
   do {
     sequence(user);
+    checkRule(board, user);
     playGoStone(board, user);
     checkWin(board, pGameStatus);
     if (user == 2) {
@@ -110,12 +111,12 @@ void drawBoard(void) {
   }
 }
 
-void sequence(int num) {
-  if (num == 2) { //흑돌 차례일때 - 김성렬
+void sequence(int user) {
+  if (user == 2) { // 흑돌 차례일때 - 김성렬
     cursor(2, 21);
     printf("*** 흑돌 차례입니다 (흑돌 / ○) ***");
   }
-  else { //백돌 차례일때 - 김성렬
+  else { // 백돌 차례일때 - 김성렬
     cursor(2, 21);
     printf("*** 백돌 차례입니다 (백돌 / ●) ***");
   }
@@ -126,7 +127,66 @@ void cursor(short x, short y) {
   SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos); // 콘솔 출력 위치 조정 - MoNiSu
 }
 
-void playGoStone(int arr[20][20], int num) {
+void checkRule(int arr[20][20], int user) {
+  if (user == 2) {
+    for (int i = 1; i <= 19; i++) { // 확인되면 X 표시 - MoNiSu
+      for (int j = 1; j <= 19; j++) {
+        if (false) { // 33 조건 작성하기 - MoNiSu
+          arr[i][j] = 1;
+        }
+        if (arr[i][j] == 1) {
+          cursor(i, j);
+          printf("X");
+        }
+      }
+    }
+  }
+  else { // 백돌이면 X 표시 풀기 - MoNiSu
+    for (int i = 1; i <= 19; i++) {
+      for (int j = 1; j <= 19; j++) {
+        if (arr[i][j] == 1) {
+          cursor(i, j);
+          if (j == 1) {
+            if (i == 1) {
+              printf("┌");
+            }
+            else if (i == 19) {
+              printf("└");
+            }
+            else {
+              printf("├");
+            }
+          }
+          else if (j == 19) {
+            if (i == 1) {
+              printf("┐");
+            }
+            else if (i == 19) {
+              printf("┘");
+            }
+            else {
+              printf("┤");
+            }
+          }
+          else {
+            if (i == 1) {
+              printf("┬");
+            }
+            else if (i == 19) {
+              printf("┴");
+            }
+            else {
+              printf("┼");
+            }
+          }
+        arr[i][j] = 0;
+        }
+      }
+    }
+  }
+}
+
+void playGoStone(int arr[20][20], int user) {
   int x = 10, y = 10, key;
   cursor(x, y);
 
@@ -169,23 +229,19 @@ void playGoStone(int arr[20][20], int num) {
       else if (key == 32) { // 32 == 스페이스 바 - MoNiSu
         if (arr[x][y] == 0) {
           cursor(x, y);
-          if (num == 2) {
+          if (user == 2) {
             printf("○");
-            arr[x][y] = num; // board에 저장
+            arr[x][y] = user; // board에 저장
           }
           else {
             printf("●");
-            arr[x][y] = num;
+            arr[x][y] = user;
           }
           break;
         }
       }
     }
   } while (true);
-}
-
-void checkRule(int arr[20][20]) {
-
 }
 
 void checkWin(int arr[20][20], bool* status) {
