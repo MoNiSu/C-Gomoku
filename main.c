@@ -131,8 +131,71 @@ void checkRule(int arr[20][20], int user) {
   if (user == 2) {
     for (int i = 1; i <= 19; i++) { // 확인되면 X 표시 - MoNiSu
       for (int j = 1; j <= 19; j++) {
-        if (false) { // 33 조건 작성하기 - MoNiSu
-          arr[i][j] = 1;
+        if (arr[i][j] == 0) { // 33 조건 작성하기 - MoNiSu
+          if (i >= 3 && j >= 3) {
+            if (arr[i - 1][j] == 2 &&
+              arr[i][j - 1] == 2 &&
+              arr[i - 1][j] == arr[i - 2][j] &&
+              arr[i][j - 1] == arr[i][j - 2]) {
+              arr[i][j] = 1;
+            }
+          }
+          if (i <= 17 && j >= 3 && j <= 17) {
+            if (arr[i + 1][j - 1] == 2 &&
+              arr[i + 1][j + 1] == 2 &&
+              arr[i + 1][j - 1] == arr[i + 2][j - 2] &&
+              arr[i + 1][j + 1] == arr[i + 2][j + 2]) {
+              arr[i][j] = 1;  
+            }
+          }
+          if (i <= 17 && j <= 17) {
+            if (arr[i + 1][j] == 2 &&
+              arr[i][j + 1] == 2 &&
+              arr[i + 1][j] == arr[i + 2][j] &&
+              arr[i][j + 1] == arr[i][j + 2]) {
+              arr[i][j] = 1;
+            }
+          }
+          if (i >= 3 && i <= 17 && j <= 17) {
+            if (arr[i + 1][j + 1] == 2 &&
+              arr[i - 1][j + 1] == 2 &&
+              arr[i + 1][j + 1] == arr[i + 2][j + 2] &&
+              arr[i - 1][j + 1] == arr[i - 2][j + 2]) {
+              arr[i][j] = 1;
+            }
+          }
+          if (i >= 3 && j <= 17) {
+            if (arr[i - 1][j] == 2 &&
+              arr[i][j + 1] == 2 &&
+              arr[i - 1][j] == arr[i - 2][j] &&
+              arr[i][j + 1] == arr[i][j + 2]) {
+              arr[i][j] = 1;
+            }
+          }
+          if (i >= 3 && j >= 3 && j <= 17) {
+            if (arr[i - 1][j - 1] == 2 &&
+              arr[i - 1][j + 1] == 2 &&
+              arr[i - 1][j - 1] == arr[i - 2][j - 2] &&
+              arr[i - 1][j + 1] == arr[i - 2][j + 2]) {
+              arr[i][j] = 1;
+            }
+          }
+          if (i >= 3 && j >= 3) {
+            if (arr[i - 1][j] == 2 &&
+              arr[i][j - 1] == 2 &&
+              arr[i - 1][j] == arr[i - 2][j] &&
+              arr[i][j - 1] == arr[i][j - 2]) {
+              arr[i][j] = 1;
+            }
+          }
+          if (i >= 3 && i <= 17 && j >= 3) {
+            if (arr[i - 1][j - 1] == 2 &&
+              arr[i + 1][j - 1] == 2 &&
+              arr[i - 1][j - 1] == arr[i - 2][j - 2] &&
+              arr[i + 1][j - 1] == arr[i + 2][j - 2]) {
+              arr[i][j] = 1;
+            }
+          }
         }
         if (arr[i][j] == 1) {
           cursor(i, j);
