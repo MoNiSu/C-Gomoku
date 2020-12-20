@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{c5cbc7da-4f04-4f4e-a9c9-44ed9052f4cd}</ProjectGuid>
-    <RootNamespace>CGomoku</RootNamespace>
+    <ProjectGuid>{8821dbb0-7702-4827-aa64-c147a40fefde}</ProjectGuid>
+    <RootNamespace>Gomoku</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
